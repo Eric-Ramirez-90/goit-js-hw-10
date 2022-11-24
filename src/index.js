@@ -19,9 +19,22 @@ function onSearch(evt) {
     return;
   }
 
-  fetchCountries(inputValue).then(data => {
-    refs.countryList.insertAdjacentHTML('beforeend', createMarkup(data));
-  });
+  fetchCountries(inputValue)
+    .then(data => {
+      if (data.length > 10) {
+        Notify.info(
+          'Too many matches found. Please enter a more specific name.'
+        );
+        return;
+      }
+
+      if (data.length < 2) {
+        refs.countryInfo.insertAdjacentHTML('beforeend', createMarkup(data));
+      }
+    })
+    .catch(error => {
+      Notify.failure('Oops, there is no country with that name.');
+    });
 }
 
 function createMarkup(arr) {
@@ -29,11 +42,11 @@ function createMarkup(arr) {
     .map(
       ({ name, flags, languages, population, capital }) =>
         `<li class="js-item">
-      <img class="js-item__img" src="${flags.svg}" alt="${name}" />
+      <img class="js-item__img" src="${flags.svg}" alt="${name}" width="50" />
       <h2>${name}</h2>
       <p><span>Capital:</span> ${capital}</p>
       <p><span>Population:</span> ${population}</p>
-      <p><span>Languages:</span> ${languages.name}</p>
+      <p><span>Languages:</span> ${languages}</p>
     </li>`
     )
     .join('');
