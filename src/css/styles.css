@@ -19,6 +19,55 @@ body {
   margin-bottom: 16px;
 }
 
-.country-list {
+.js-list {
   list-style: none;
+}
+
+.country-list__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.js-item__img {
+  width: 60px;
+  height: auto;
+}
+
+.js-card {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 10px 35px;
+  gap: 10px;
+
+  background-color: #efefef;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.js-card-top {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.js-card-img {
+  width: 150px;
+  height: auto;
+}
+
+.js-card-title {
+  font-size: 50px;
+  margin: 0;
+}
+
+.js-card-text {
+  font-size: 20px;
+  letter-spacing: 1.5px;
+}
+
+.js-card-span {
+  font-weight: 900;
+  letter-spacing: 1.5px;
 }
